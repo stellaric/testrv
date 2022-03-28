@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 
-import android.util.AttributeSet;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.*;
-import  android.view.View.OnClickListener;
+
 import android.widget.Toast;
 
 import fr.gsb.rv.modeles.ModeleGsb;
@@ -27,6 +27,7 @@ import static fr.gsb.rv.technique.Session.ouvrir;
 public class MainActivity extends AppCompatActivity {
     static final String TAG = "GSB_MAIN_ACTIVITY";
     TextView tvVisiteur;
+    TextView tvErreur;
     EditText etMatricule;
     EditText etMdp;
     Visiteur leVisiteur;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
         tvVisiteur = (TextView) findViewById(R.id.tvVisiteur);
+        tvErreur = (TextView) findViewById(R.id.tvErreur);
+
         etMatricule = (EditText) findViewById(R.id.etMatricule);
         etMdp = (EditText) findViewById(R.id.etMdp);
 
@@ -58,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
         bAnnuler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-    annuler();
-            }
+                annuler();
+            };
         });
 
     }
+
 
     public void seConnecter(View v ) {
         try {
@@ -71,15 +75,17 @@ public class MainActivity extends AppCompatActivity {
             String mdp = leVisiteur.getMdp();
 
             Visiteur visiteur = ModeleGsb.getInstance().seConnecter(leVisiteur.getMdp(), leVisiteur.getMatricule());
-                if (matricule == visiteur.getMatricule() && mdp == visiteur.getMdp() ) {
+
+            if (matricule.equals(visiteur.getMatricule())  && mdp.equals(visiteur.getMdp()) ) {
                     if (session != null){
                     ouvrir(visiteur);
                     bSeConnecter.isEnabled();
                     bAnnuler.isEnabled();
+
                     Toast.makeText(this,"message",Toast.LENGTH_LONG).show();
             }
                 else {
-
+                    tvErreur.getError().toString();
                     }
                 }
 
