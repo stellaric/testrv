@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RV-Visiteur</string>
+    <string name="etMatricule"></string>
+    <string name="etMdp"></string>
+    <string name="bValider">Valider</string>
+    <string name="bAnnuler">Annuler</string>
+</resources>
+

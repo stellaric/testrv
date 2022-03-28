@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="fr.gsb.MainActivity">
+
+    <TextView
+        android:id="@+id/tvVisiteur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Matricule :" />
+
+    <EditText
+        android:id="@+id/etMatricule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/etMatricule" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mot de passe :" />
+
+    <EditText
+        android:id="@+id/etMdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/etMdp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bValider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:text="@string/bValider" />
+
+        <Button
+            android:id="@+id/bAnnuler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:text="@string/bAnnuler" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
