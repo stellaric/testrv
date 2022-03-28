@@ -3,6 +3,7 @@ package fr.gsb;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.*;
+import  android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import fr.gsb.rv.modeles.ModeleGsb;
 import fr.gsb.rv.entites.*;
@@ -49,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 seConnecter(v);
-
             };
         });
 
@@ -64,10 +66,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void seConnecter(View v ) {
         try {
+
+            String matricule = leVisiteur.getMatricule();
+            String mdp = leVisiteur.getMdp();
+
             Visiteur visiteur = ModeleGsb.getInstance().seConnecter(leVisiteur.getMdp(), leVisiteur.getMatricule());
-            if (session != null) {
-                ouvrir(visiteur);
+                if (matricule == visiteur.getMatricule() && mdp == visiteur.getMdp() ) {
+                    if (session != null){
+                    ouvrir(visiteur);
+                    bSeConnecter.isEnabled();
+                    bAnnuler.isEnabled();
+                    Toast.makeText(this,"message",Toast.LENGTH_LONG).show();
             }
+                else {
+
+                    }
+                }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
